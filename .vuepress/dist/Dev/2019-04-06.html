@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>완주하지 못한 선수 | Algorithm Challenges</title>
+    <meta name="description" content="Just Do Algorithm">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.3ea5b7af.css" as="style"><link rel="preload" href="/assets/js/app.e42ebe52.js" as="script"><link rel="preload" href="/assets/js/3.a0d9e1e4.js" as="script"><link rel="prefetch" href="/assets/js/2.bbac8744.js"><link rel="prefetch" href="/assets/js/4.3e5d6e29.js"><link rel="prefetch" href="/assets/js/5.2fed7e92.js"><link rel="prefetch" href="/assets/js/6.c6708033.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.3ea5b7af.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Algorithm Challenges</span></a> <div class="links" style="max-width:nullpx;"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="/Dev/" class="nav-link router-link-active">Dev</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="/Dev/" class="nav-link router-link-active">Dev</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/Dev/" class="sidebar-link">Introduction</a></li><li><a href="/Dev/2019-04-06.html" class="active sidebar-link">완주하지 못한 선수</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Dev/2019-04-06.html#_1-처음-푼-방식" class="sidebar-link">1. 처음 푼 방식</a></li><li class="sidebar-sub-header"><a href="/Dev/2019-04-06.html#_2-두번째-방식" class="sidebar-link">2. 두번째 방식</a></li><li class="sidebar-sub-header"><a href="/Dev/2019-04-06.html#_3-마지막-방식" class="sidebar-link">3. 마지막 방식</a></li></ul></li></ul> </div> <div class="page"> <div class="content"><h1 id="완주하지-못한-선수"><a href="#완주하지-못한-선수" aria-hidden="true" class="header-anchor">#</a> 완주하지 못한 선수</h1> <h2 id="_1-처음-푼-방식"><a href="#_1-처음-푼-방식" aria-hidden="true" class="header-anchor">#</a> 1. 처음 푼 방식</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">participant<span class="token punctuation">,</span> completion</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token keyword">in</span> participant<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>completion<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>participant<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> participant<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    
+    completion<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>completion<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>participant<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>participant의 length가 completion의 length 보다 클 확률이 높으므로, participant기준으로 for in문을 돌림.</li> <li>participant[i]가 completion 배열 내에 포함되어 있지 않으면, 그 participant[i]는 완주하지 못했으므로 return함.</li> <li>completion 배열에서 participant[i]를 잘라냄.</li></ul> <blockquote><p>결과: 효율성 통과 실패</p></blockquote> <h2 id="_2-두번째-방식"><a href="#_2-두번째-방식" aria-hidden="true" class="header-anchor">#</a> 2. 두번째 방식</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">participant<span class="token punctuation">,</span> completion</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> tmp <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  tmp <span class="token operator">=</span> participant<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">...</span>completion<span class="token punctuation">)</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> val <span class="token keyword">of</span> tmp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">[</span>val<span class="token punctuation">]</span> <span class="token operator">=</span> res<span class="token punctuation">[</span>val<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">undefined</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token punctuation">:</span> res<span class="token punctuation">[</span>val<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> val <span class="token keyword">in</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">[</span>val<span class="token punctuation">]</span> <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">return</span> val
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>미리 tmp, res 변수를 만들어 둔 뒤, participant배열과 completion배열을 tmp배열에 합쳐 넣음.</li> <li>participant배열과 completion배열의 인자가 모두 들어있는 tmp를 순회하면서 각 선수의 중복값을 카운트함.</li> <li>선수의 중복값이 홀수라면 completion에 없다는 의미이기 때문에, res 객체를 순회하면서 중복값이 홀수인 선수를 찾아 리턴함.</li></ul> <blockquote><p>결과: 효율성 통과 실패 ;ㅁ;</p></blockquote> <h2 id="_3-마지막-방식"><a href="#_3-마지막-방식" aria-hidden="true" class="header-anchor">#</a> 3. 마지막 방식</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">participant<span class="token punctuation">,</span> completion</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  participant<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+  completion<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> idx <span class="token keyword">in</span> participant<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>participant<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">!==</span> completion<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> participant<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/Dev/" class="prev router-link-active">
+          Introduction
+        </a></span> <!----></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.e42ebe52.js" defer></script><script src="/assets/js/3.a0d9e1e4.js" defer></script>
+  </body>
+</html>
