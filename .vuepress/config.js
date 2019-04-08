@@ -1,4 +1,5 @@
 module.exports = {
+  base: 'algorithm-challenges',
   title: 'Algorithm Challenges',
   description: 'Just Do Algorithm',
   themeConfig: {
